@@ -7,17 +7,42 @@
     <title>Dibujando con flechas</title>
     <style>
         body{
-            padding: 1em;
-            text-align: center;
+            padding: 2em;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
+        .content {
+            display: flex;
+            flex-flow: row;
+        }
+        /* .canvas {
+        } */
         canvas {
             border: 1px solid black;
+            /* width: 40vw;
+            height: 80vh; */
+        }
+        .tools {
+            text-align: left;
+            padding: 1%;
         }
     </style>
 </head>
 <body>
-    <h1>Dibuja con tu mouse:</h1>
-    <canvas width="500" height="500" id="area_de_dibujo"></canvas>
+    <div class="content">
+        <div class="canvas">
+            <h1>Dibuja con tu mouse:</h1>
+            <canvas width="500" height="500" id="area_de_dibujo"></canvas>        
+        </div>
+        <div class="tools">
+            <div class="color">
+                <p>Color picker: </p>
+                <input type="color" name="color" id="color">
+            </div>
+            <div class="thick"></div>
+            <div class="delete"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
     <script src="functions.js"></script>
 </body>
 </html>
