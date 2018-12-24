@@ -14,8 +14,6 @@
             display: flex;
             flex-flow: row;
         }
-        /* .canvas {
-        } */
         canvas {
             border: 1px solid black;
             /* width: 40vw;
@@ -37,6 +35,38 @@
             width: 50px;
             height: auto;
         }
+        #color {
+            display: block;
+            position: fixed;
+            opacity: 0;
+            margin: 0 17px;
+            height: 50px;
+        }
+        #palette {
+            width: 50px;
+        }
+        @media screen and (min-width: 1080px){
+            .canvas {
+                flex: 1 1 60%;
+                text-align: right;
+            }
+            .canvas h1 {
+                width: 100%;
+                text-align: center;
+            }
+            .tools-container {
+                flex: 1 0 30%;
+                text-align: left;
+            }
+            .tools {
+                padding: 0 2em;
+                max-width: 80px;
+            }
+        }
+        @media screen and (max-width: ){}
+        @media screen and (max-width: ){}
+        @media screen and (max-width: ){}
+        @media screen and (max-width: ){}
     </style>
 </head>
 <body>
@@ -45,53 +75,56 @@
             <h1>Dibuja con tu mouse:</h1>
             <canvas width="500" height="500" id="area_de_dibujo"></canvas>        
         </div>
-        <div class="tools">
-            <div class="color">
-                <p>Color:</p>
-                <input type="color" name="color" id="color" onchange="getColor();">
+        <div class="tools-container">
+            <div class="tools">
+                <div class="color">
+                    <p>Color:</p>
+                    <input type="color" name="color" id="color" onchange="getColor();">
+                    <img src="images/palette.png" alt="" id="palette">
+                </div>
+                <div class="thick">
+                    <p>Thickness:</p>
+                    <ul class="icons">
+                        <li>
+                            <a href="#" value="1" onclick="getThikness(1);"> 
+                                <img src="images/pen.png" alt="Thinner: 1" >
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" value="1" onclick="getThikness(2);"> 
+                                <img src="images/pencil.png" alt="" srcset="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" value="1" onclick="getThikness(4);"> 
+                                <img src="images/marker.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" value="1" onclick="getThikness(6);"> 
+                                <img src="images/brush.png" alt=""> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" value="1" onclick="getThikness(15);"> 
+                                <img src="images/bigBrush.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" value="1" onclick="getThikness(20);"> 
+                                <img src="images/aerosol.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" value="1" onclick="eraser();"> 
+                                <img src="images/eraser.png" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="delete"></div>
+                <div class="clear"></div>
             </div>
-            <div class="thick">
-                <p>Thickness:</p>
-                <ul class="icons">
-                    <li>
-                        <a href="#" value="1" onclick="getThikness(1);"> 
-                            <img src="images/pen.png" alt="Thinner: 1" >
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" value="1" onclick="getThikness(2);"> 
-                            <img src="images/pencil.png" alt="" srcset="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" value="1" onclick="getThikness(3);"> 
-                            <img src="images/marker.png" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" value="1" onclick="getThikness(4);"> 
-                            <img src="images/brush.png" alt=""> 
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" value="1" onclick="getThikness(5);"> 
-                            <img src="images/bigBrush.png" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" value="1" onclick="getThikness(6);"> 
-                            <img src="images/aerosol.png" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" value="1" onclick="eraser();"> 
-                            <img src="images/eraser.png" alt="">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="delete"></div>
-            <div class="clear"></div>
         </div>
     </div>
     <script src="functions.js"></script>

@@ -10,7 +10,6 @@ var x,y;
 var thickness = 1;
 
 function startTrace() {
-    console.log(thickness);
     var mouseDown = false;
     var startPoint = getCoords(event);
     document.addEventListener(
