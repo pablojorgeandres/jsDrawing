@@ -22,8 +22,20 @@
             height: 80vh; */
         }
         .tools {
-            text-align: left;
+            text-align: center;
             padding: 1%;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            text-decoration: none;
+            list-style: none;
+        }
+        ul.thick img{
+            width: 50px;
+            height: auto;
         }
     </style>
 </head>
@@ -35,10 +47,49 @@
         </div>
         <div class="tools">
             <div class="color">
-                <p>Color picker: </p>
-                <input type="color" name="color" id="color">
+                <p>Color:</p>
+                <input type="color" name="color" id="color" onchange="getColor();">
             </div>
-            <div class="thick"></div>
+            <div class="thick">
+                <p>Thickness:</p>
+                <ul class="icons">
+                    <li>
+                        <a href="#" value="1" onclick="getThikness(1);"> 
+                            <img src="images/pen.png" alt="Thinner: 1" >
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" value="1" onclick="getThikness(2);"> 
+                            <img src="images/pencil.png" alt="" srcset="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" value="1" onclick="getThikness(3);"> 
+                            <img src="images/marker.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" value="1" onclick="getThikness(4);"> 
+                            <img src="images/brush.png" alt=""> 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" value="1" onclick="getThikness(5);"> 
+                            <img src="images/bigBrush.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" value="1" onclick="getThikness(6);"> 
+                            <img src="images/aerosol.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" value="1" onclick="eraser();"> 
+                            <img src="images/eraser.png" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div class="delete"></div>
             <div class="clear"></div>
         </div>

@@ -7,9 +7,10 @@ var canvasOffSetX = canvasObj.offsetLeft;
 var canvasOffSetY = canvasObj.offsetTop;
 var color = 'black';
 var x,y;
+var thickness = 1;
 
 function startTrace() {
-    
+    console.log(thickness);
     var mouseDown = false;
     var startPoint = getCoords(event);
     document.addEventListener(
@@ -26,7 +27,7 @@ function startTrace() {
             return;
         } else if( x > 0 && x < 500 && y > 0 && y < 500) {
             canvas.strokeStyle = color;
-            canvas.lineWidth = 1;
+            canvas.lineWidth = thickness;
             canvas.beginPath();
             canvas.moveTo( x , y );
             var endPoint = getCoords(event);        
@@ -48,4 +49,20 @@ function getCoords(event) {
     var canvasRealX = mouseX - canvasOffSetX;
     var canvasRealY = mouseY - canvasOffSetY;
     return { x:canvasRealX, y:canvasRealY };
+}
+
+function getThikness(n) {
+    color = document.getElementById("color").value;
+    thickness = n;
+    return thickness;
+}
+
+function eraser() {
+    thickness = 20;
+    color = 'white';
+}
+
+function getColor() {
+    color = document.getElementById("color").value;
+    return color;
 }
