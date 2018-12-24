@@ -9,12 +9,6 @@ var thickness = 1;
 var opacity = 1;
 
 function startTrace() {
-    // setCanvasSize();
-    // canvasValues();
-    // getCanvasOffSet();
-    // console.log('w&h: ' + width + ', ' + height);
-    // console.log('OffSet: ' + canvasOffSetX + ', ' + canvasOffSetY);
-
     var mouseDown = false;
     startPoint = getCoords(event);
     document.addEventListener(
@@ -27,12 +21,6 @@ function startTrace() {
              })
     document.addEventListener('mouseup', function() { mouseDown = false })
     document.addEventListener('mousemove', function() {
-        // setCanvasSize();
-        // canvasValues();
-        // getCanvasOffSet();
-        // console.log(canvas);
-        // console.log('w&h: ' + width + ', ' + height);
-        // console.log('OffSet: ' + canvasOffSetX + ', ' + canvasOffSetY);
         if (!mouseDown) {
             return;
         } else if( x > 0 && x < width && y > 0 && y < height) {
@@ -88,14 +76,21 @@ function getOpacity() {
 }
 
 function setCanvasSize() {
-    width = (window.innerWidth * 20)/100;
-    width = (window.innerWidth - width);
+    var innerWidth = window.innerWidth;
+    width = (innerWidth * 15)/100;
+    width = (innerWidth - width);
     width = parseInt(width);
     document.getElementById("area_de_dibujo").setAttribute("width", width);
 
-    height = (window.innerHeight * 20)/100;
-    height = window.innerHeight - height;
-    height = parseInt(height);
+    if(innerWidth < 700) {
+        height = (window.innerHeight * 30)/100;
+        height = window.innerHeight - height;
+        height = parseInt(height);
+    } else {
+        height = (window.innerHeight * 15)/100;
+        height = window.innerHeight - height;
+        height = parseInt(height);
+    }
     document.getElementById("area_de_dibujo").setAttribute("height", height);
 }
 
