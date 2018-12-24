@@ -1,7 +1,10 @@
+html,
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     padding: 0;
+    position: fixed;
+    overflow: hidden;
 }
 p {
     margin: 5px;

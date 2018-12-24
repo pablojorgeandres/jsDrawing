@@ -1,5 +1,4 @@
 document.addEventListener("mousemove", startTrace);
-//document.addEventListener("touchstart", startTrace);
 
 var canvasObj, canvas, canvasOffSetX, canvasOffSetY, startPoint, width, height, x, y;
 setCanvasSize();
@@ -103,4 +102,38 @@ function getCanvasOffSet() {
 function canvasValues() {
     canvasObj = document.getElementById('area_de_dibujo');
     canvas = canvasObj.getContext("2d");
+}
+
+//** For Touch devices!!! **//
+
+canvasObj.addEventListener('touchstart', startTouchTrace)
+
+function startTouchTrace() {
+    var touchDown = false;
+    startPoint = getCoords(event);
+    document.addEventListener(
+            'touchstart', 
+            function() { touchDown = true;
+                if(startPoint.x > 0 && startPoint.x < width && startPoint.y > 0 && startPoint.y < height){
+                    x = startPoint.x;
+                    y = startPoint.y;    
+                }
+             })
+    document.addEventListener('touchend', function() { touchDown = false })
+    document.addEventListener('touchmove', function() {
+        if (!touchDown) {
+            return;
+        } else if( x > 0 && x < width && y > 0 && y < height) {
+            canvas.strokeStyle = color;
+            canvas.lineWidth = thickness;
+            canvas.globalAlpha = opacity;
+            canvas.beginPath();
+            canvas.moveTo( x , y );
+            var endPoint = getCoords(event);
+            canvas.lineTo(endPoint.x, endPoint.y);
+            canvas.stroke();
+            x = endPoint.x;
+            y = endPoint.y;
+        }
+    }); 
 }
