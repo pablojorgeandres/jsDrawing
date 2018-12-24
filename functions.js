@@ -1,4 +1,5 @@
 document.addEventListener("mousemove", startTrace);
+//document.addEventListener("touchstart", startTrace);
 
 var canvasObj, canvas, canvasOffSetX, canvasOffSetY, startPoint, width, height, x, y;
 setCanvasSize();
