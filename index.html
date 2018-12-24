@@ -11,6 +11,21 @@
             margin: 0;
             padding: 0;
         }
+        p {
+            margin: 5px;
+        }
+        .thick p {
+            margin: 12px 0;
+        }
+        .thick > ul > li:nth-child(7) > p {
+            margin: 10px 0 5px;
+        }
+        .thick > ul > li:nth-child(8) > p {
+            margin: 10px 0 3px;
+        }
+        .thick > ul > li:nth-child(9) {
+            margin: 15px 0;
+        }
         .content {
             display: flex;
             flex-flow: row;
@@ -19,12 +34,15 @@
         }
         canvas {
             border: 1px solid black;
-            /* width: 40vw;
-            height: 80vh; */
+        }
+        .canvas {
+            flex: 0 1 65%;
+            margin: 0 2em;
         }
         .tools {
             text-align: center;
             padding: 1%;
+            margin: 4em 0;
         }
         ul {
             padding: 0;
@@ -54,7 +72,7 @@
         }
         @media screen and (min-width: 1080px){
             .canvas {
-                flex: 1 1 60%;
+                flex: 0 1 65%;
                 text-align: right;
             }
             .canvas h1 {
@@ -70,17 +88,92 @@
                 max-width: 80px;
             }
         }
-        @media screen and (max-width: ){}
-        @media screen and (max-width: ){}
-        @media screen and (max-width: ){}
-        @media screen and (max-width: ){}
+        @media screen and (min-width: 970px) and (max-width: 1079px) {
+            .canvas {
+                flex: 0 1 65%;
+                text-align: right;
+            }
+            .canvas h1 {
+                width: 100%;
+                text-align: center;
+            }
+            .tools-container {
+                flex: 1 0 30%;
+                text-align: left;
+            }
+            .tools {
+                padding: 0 2em;
+                max-width: 80px;
+            }
+        }
+        @media screen and (min-width: 700px) and (max-width: 969px){
+            .canvas {
+                flex: 1 1 60%;
+                text-align: right;
+            }
+            .canvas h1 {
+                width: 100%;
+                text-align: center;
+            }
+            .tools-container {
+                flex: 0 0 25%;
+                text-align: left;
+            }
+            .tools {
+                padding: 0 2em;
+                max-width: 80px;
+            }
+        }
+        @media screen and (min-width: 400px) and (max-width: 699px){
+            .content {
+                flex-flow: column;
+            }
+            .canvas {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+            .canvas h1 {
+                width: 100%;
+                text-align: center;
+            }
+            .tools-container {
+                flex: 1 1 100%;
+                margin: 0 0 0 6%;
+                padding: 2em;
+            }
+            .tools {
+                padding: 0;
+                display: flex;
+                flex-direction: row;
+                margin: 0;
+            }
+            ul {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                width: 126%;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            p {
+                display: none;
+            }
+        }
+        @media screen and (max-width: 600px){
+            .tools-container {
+                margin: 0;
+            }
+            .tools {
+                margin: 0;
+            }
+        }
     </style>
 </head>
-<body>
+<body onload="setCanvasSize();" onresize="setCanvasSize();" >
     <div class="content">
         <div class="canvas">
             <h1>Dibuja con tu mouse:</h1>
-            <canvas width="500" height="500" id="area_de_dibujo"></canvas>        
+            <canvas id="area_de_dibujo"></canvas>        
         </div>
         <div class="tools-container">
             <div class="tools">
@@ -123,6 +216,12 @@
                             </a>
                         </li>
                         <li>
+                            <p>Erase:</p>
+                            <a href="#" value="1" onclick="eraser();"> 
+                                <img src="images/eraser.png" alt="">
+                            </a>
+                        </li>
+                        <li>
                             <p>Opacity:</p>
                             <select name="opacity" id="opacity" onchange="getOpacity();"> 
                                 <option value="1">5</option>
@@ -131,12 +230,6 @@
                                 <option value="0.5">2</option>
                                 <option value="0.3">1</option>
                             </select>
-                        </li>
-                        <li>
-                            <p>Erase:</p>
-                            <a href="#" value="1" onclick="eraser();"> 
-                                <img src="images/eraser.png" alt="">
-                            </a>
                         </li>
                         <li>
                             <button id="clear-all" onclick="clearAll();">Clear All</button>
