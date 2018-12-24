@@ -7,12 +7,15 @@
     <title>Dibujando con flechas</title>
     <style>
         body{
-            padding: 2em;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .content {
             display: flex;
             flex-flow: row;
+            width: 100vw;
+            height: 100vh;
         }
         canvas {
             border: 1px solid black;
@@ -44,6 +47,10 @@
         }
         #palette {
             width: 50px;
+        }
+        .thick ul > li > a > img {
+            width: 40px;
+            height: auto;
         }
         @media screen and (min-width: 1080px){
             .canvas {
@@ -116,9 +123,23 @@
                             </a>
                         </li>
                         <li>
+                            <p>Opacity:</p>
+                            <select name="opacity" id="opacity" onchange="getOpacity();"> 
+                                <option value="1">5</option>
+                                <option value="0.9">4</option>
+                                <option value="0.7">3</option>
+                                <option value="0.5">2</option>
+                                <option value="0.3">1</option>
+                            </select>
+                        </li>
+                        <li>
+                            <p>Erase:</p>
                             <a href="#" value="1" onclick="eraser();"> 
                                 <img src="images/eraser.png" alt="">
                             </a>
+                        </li>
+                        <li>
+                            <button id="clear-all" onclick="clearAll();">Clear All</button>
                         </li>
                     </ul>
                 </div>

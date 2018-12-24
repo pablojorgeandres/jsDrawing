@@ -1,13 +1,16 @@
-// document.addEventListener("mousemove", detectWhereIsMouse);
+
+
 document.addEventListener("mousemove", startTrace);
 
 var canvasObj = document.getElementById('area_de_dibujo');
 var canvas = canvasObj.getContext("2d");
+console.log(canvas);
 var canvasOffSetX = canvasObj.offsetLeft;
 var canvasOffSetY = canvasObj.offsetTop;
 var color = 'black';
 var x,y;
 var thickness = 1;
+var opacity = 1;
 
 function startTrace() {
     var mouseDown = false;
@@ -27,6 +30,7 @@ function startTrace() {
         } else if( x > 0 && x < 500 && y > 0 && y < 500) {
             canvas.strokeStyle = color;
             canvas.lineWidth = thickness;
+            canvas.globalAlpha = opacity;
             canvas.beginPath();
             canvas.moveTo( x , y );
             var endPoint = getCoords(event);        
@@ -52,16 +56,24 @@ function getCoords(event) {
 
 function getThikness(n) {
     color = document.getElementById("color").value;
+    opacity = document.getElementById("opacity").value;
     thickness = n;
-    return thickness;
 }
 
 function eraser() {
     thickness = 20;
+    opacity = 1;
     color = 'white';
 }
 
 function getColor() {
     color = document.getElementById("color").value;
-    return color;
+}
+
+function clearAll() {
+    canvas.clearRect(0, 0, canvasObj.width, canvasObj.height);
+}
+
+function getOpacity() {
+    opacity = document.getElementById("opacity").value;
 }
