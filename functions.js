@@ -104,7 +104,7 @@ function canvasValues() {
     canvas = canvasObj.getContext("2d");
 }
 
-//** For Touch devices!!! **//
+//*** For Touch devices!!! ***//
 
 canvasObj.addEventListener('touchstart', startTouchTrace)
 
