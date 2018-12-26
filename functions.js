@@ -30,7 +30,6 @@ function startTrace() {
             canvas.beginPath();
             canvas.moveTo( x , y );
             var endPoint = getCoords(event);
-            //console.log(event.pageX);      
             canvas.lineTo(endPoint.x, endPoint.y);
             canvas.stroke();
             x = endPoint.x;
@@ -104,36 +103,56 @@ function canvasValues() {
     canvas = canvasObj.getContext("2d");
 }
 
-//*** For Touch devices!!! ***//
+//***  TOUCH CODE  ***//
+var lastPt = new Object();
 
-canvasObj.addEventListener('touchstart', startTouchTrace)
-
-function startTouchTrace() {
-    var touchDown = false;
-    startPoint = getCoords(event);
-    document.addEventListener(
-            'touchstart', 
-            function() { touchDown = true;
-                if(startPoint.x > 0 && startPoint.x < width && startPoint.y > 0 && startPoint.y < height){
-                    x = startPoint.x;
-                    y = startPoint.y;    
-                }
-             })
-    document.addEventListener('touchend', function() { touchDown = false })
-    document.addEventListener('touchmove', function() {
-        if (!touchDown) {
-            return;
-        } else if( x > 0 && x < width && y > 0 && y < height) {
-            canvas.strokeStyle = color;
-            canvas.lineWidth = thickness;
-            canvas.globalAlpha = opacity;
-            canvas.beginPath();
-            canvas.moveTo( x , y );
-            var endPoint = getCoords(event);
-            canvas.lineTo(endPoint.x, endPoint.y);
-            canvas.stroke();
-            x = endPoint.x;
-            y = endPoint.y;
-        }
-    }); 
+function init() {
+  canvasObj = document.getElementById("area_de_dibujo");
+  canvasObj.addEventListener("touchmove", draw, false);
+  canvasObj.addEventListener("touchend", end, false);   
+  canvas = canvasObj.getContext("2d");
 }
+
+function draw(e) {
+  e.preventDefault();
+  getCanvasOffSet();
+  //Iterate over all touches
+  for(var i=0;i<e.touches.length;i++) {
+    var id = e.touches[i].identifier;   
+    if(lastPt[id]) {
+      canvas.beginPath();
+      canvas.moveTo(lastPt[id].x - canvasOffSetX, lastPt[id].y - canvasOffSetY);
+      canvas.lineTo(e.touches[i].pageX - canvasOffSetX, e.touches[i].pageY - canvasOffSetY);
+      canvas.strokeStyle = color;
+      canvas.lineWidth = thickness;
+      canvas.globalAlpha = opacity;
+      canvas.stroke();
+
+    }
+    // Store last point
+    lastPt[id] = {x:e.touches[i].pageX, y:e.touches[i].pageY};
+  }
+}
+
+function end(e) {
+  e.preventDefault();
+  for(var i=0;i<e.changedTouches.length;i++) {
+    var id = e.changedTouches[i].identifier;
+    // Terminate this touch
+    delete lastPt[id];
+  }
+} 
+
+function getOffset(obj) {
+    var offsetLeft = 0;
+    var offsetTop = 0;
+    do {
+      if (!isNaN(obj.offsetLeft)) {
+        offsetLeft += obj.offsetLeft;
+      }
+      if (!isNaN(obj.offsetTop)) {
+        offsetTop += obj.offsetTop;
+      }   
+    } while(obj = obj.offsetParent );
+    return {left: offsetLeft, top: offsetTop};
+  } 
