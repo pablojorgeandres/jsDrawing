@@ -10,13 +10,14 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
     addCss('css/style.css');
 }
 
+setCanvasSize();
+
 var canvasObj, canvas2D, canvasOffSetX, canvasOffSetY, startPoint, width, height, x, y;
 var color = 'black';
 var thickness = 1;
 var opacity = 1;
 
 canvasValues();
-window.onload = setCanvasSize();
 
 document.addEventListener("mousemove", startTrace);
 
