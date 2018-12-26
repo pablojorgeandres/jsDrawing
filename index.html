@@ -17,8 +17,30 @@
             <div class="tools">
                 <div class="color">
                     <p>Color:</p>
-                    <input type="color" name="color" id="color" onchange="getColor();">
+                    <input type="color" name="color" id="color" onchange="getColor('color');">
                     <img src="images/palette.png" alt="" id="palette">
+                    <select name="colorSelect" id="colorSelect" onchange="getColor('colorSelect');" style="display: none;">
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                        <option value="red">Red</option>
+                        <option value="DarkRed">DarkRed</option>
+                        <option value="pink">Pink</option>
+                        <option value="HotPink">HotPink</option>
+                        <option value="Aqua">Aqua</option>
+                        <option value="CornflowerBlue">CornflowerBlue</option>
+                        <option value="blue">Blue</option>
+                        <option value="BlueViolet">Blue Violet</option>
+                        <option value="brown">Brown</option>
+                        <option value="orange">Orange</option>
+                        <option value="OrangeRed">OrangeRed</option>
+                        <option value="Lime">Lime</option>
+                        <option value="green">Green</option>
+                        <option value="DarkGreen">DarkGreen</option>
+                        <option value="DarkOliveGreen">DarkOliveGreen</option>
+                        <option value="Chartreuse">Chartreuse</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="grey">Grey</option>
+                    </select>
                 </div>
                 <div class="thick">
                     <p>Thickness:</p>
