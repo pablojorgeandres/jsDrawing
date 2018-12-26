@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Drawing</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body onload="setCanvasSize();init();" onresize="setCanvasSize();init();" >
     <div class="content">
         <div class="canvas">
-            <h1>Dibuja con tu mouse:</h1>
+            <h1 id="title" >Drawing Table:</h1>
             <canvas id="area_de_dibujo"></canvas>        
         </div>
         <div class="tools-container">
@@ -19,7 +18,7 @@
                     <p>Color:</p>
                     <input type="color" name="color" id="color" onchange="getColor('color');">
                     <img src="images/palette.png" alt="" id="palette">
-                    <select name="colorSelect" id="colorSelect" onchange="getColor('colorSelect');" style="display: none;">
+                    <select name="colorSelect" id="colorSelect" onchange="getColor('colorSelect');">
                         <option value="black">Black</option>
                         <option value="white">White</option>
                         <option value="red">Red</option>
@@ -97,6 +96,9 @@
                     </ul>
                 </div>
             </div>
+        </div>
+        <div class="tools-toogle">
+            <img src="images/compass.png" alt="">
         </div>
     </div>
     <script src="functions.js"></script>

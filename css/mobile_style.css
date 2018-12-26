@@ -12,6 +12,39 @@ p {
 h1 {
     margin: 10px 0;
 }
+#title {
+    display: block;
+    position: fixed;
+    font-size: 1.4em;
+    margin: 0;
+    background: rgba(220,220,240,.7);
+    padding: .6em;
+    border-radius: 10px;
+    border: 1px solid #999;
+    top: 10px;
+    left: -10px;
+
+    -webkit-transform: none;
+            transform: none;
+}
+
+.title-show #title{
+    -webkit-transform: translateX(-190px);
+    transform: translateX(-190px);
+    will-change: transform;
+}
+
+.menu--animatable #title,
+.menu--animatable .tools {
+    transition: all 130ms ease-in;
+}
+
+.title-show.menu--animatable  #title,
+.toolbar-hide.menu--animatable  .tools {
+    transition: all 330ms ease-out;
+}
+
+
 .thick p {
     margin: 12px 0;
 }
@@ -31,16 +64,62 @@ h1 {
     height: 100vh;
 }
 canvas {
-    border: 1px solid black;
+    border: 2px solid black;
 }
 .canvas {
     flex: 0 1 65%;
-    margin: 0 2em;
+    margin: 0;
 }
+
 .tools {
     text-align: center;
-    padding: 1%;
-    margin: 3.5em 0 0 0;
+    padding: 5px;
+    margin: 0;
+    display: block;
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    top: 10px;
+    background: rgba(220,220,240,0.7);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #999;
+
+    -webkit-transform: none;
+            transform: none;
+}
+
+.toolbar-hide .tools{
+    -webkit-transform: translateX(150px);
+    transform: translateX(150px);
+    will-change: transform;
+}
+
+/* .menu--animatable .tools {
+    transition: all 130ms ease-in;
+}
+
+.toolbar-hide.menu--animatable  .tools {
+    transition: all 330ms ease-out;
+} */
+
+.tools-toogle {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    bottom: 10%;
+    width: 30px;
+    height: 35px;
+    background: rgba(220,220,240,0.7);
+    border: 1px solid #999;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 2px 4px 2px 2px;
+}
+
+.tools-toogle img{
+    width: 35px;
 }
 ul {
     padding: 0;
@@ -51,44 +130,34 @@ ul li {
     list-style: none;
 }
 #color {
-    display: block;
-    position: fixed;
-    opacity: 0;
-    margin: 0 17px;
-    height: 50px;
+    display: none;
 }
 #palette {
-    width: 50px;
+    display: none;
 }
 .thick ul > li > a > img {
     width: 40px;
     height: auto;
 }
-#colorSelect {
-    display: none;
-}
-.tools-toogle {
-    display: none;
-}
-@media screen and (min-width: 1080px){
-    .canvas {
-        flex: 0 1 65%;
-        text-align: right;
-    }
-    .canvas h1 {
-        width: 100%;
-        text-align: center;
-    }
-    .tools-container {
-        flex: 0 1 15%;
-        text-align: left;
-    }
+/* @media screen and (max-width: 760px){
+
     .tools {
-        padding: 0 2em 0 0;
-        max-width: 80px;
+        padding: 5px;
+        z-index: 10;
+
+        bottom: 0;
+        left: 0;
+
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0;
     }
-}
-@media screen and (min-width: 970px) and (max-width: 1079px) {
+    .tools ul {
+        display: flex;
+        flex-flow: row;
+    }
+} */
+/* @media screen and (min-width: 970px) and (max-width: 1079px) {
     .canvas {
         flex: 0 1 65%;
         text-align: right;
@@ -173,4 +242,4 @@ ul li {
     .tools {
         margin: 0;
     }
-}
+} */
