@@ -127,6 +127,7 @@ function getCanvasOffSet() {
 function canvasValues() {
     canvasObj = document.getElementById('area_de_dibujo');
     canvas2D = canvasObj.getContext("2d");
+    canvas2D.imageSmoothingQuality = "high";
 }
 
 
@@ -255,8 +256,10 @@ title.addEventListener("click", toggleClassMenu, false);
 toolbarContainer.addEventListener("transitionend", OnTransitionToolsEnd, false);
 toolbar.addEventListener("click", toggleToolsMenu, false);
 
-var dataURL;
 //*** Canvas Screen Shot ***//
-function shot() {
-    dataURL = canvas2D.toDataURL();
-}
+// var dataURL;
+// function shot() {
+//     console.log(canvas2D);
+//     dataURL = canvas2D.toDataURL();
+//     window.open(dataURL);
+// }
