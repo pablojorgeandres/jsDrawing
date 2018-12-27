@@ -254,3 +254,9 @@ title.addEventListener("click", toggleClassMenu, false);
 
 toolbarContainer.addEventListener("transitionend", OnTransitionToolsEnd, false);
 toolbar.addEventListener("click", toggleToolsMenu, false);
+
+var dataURL;
+//*** Canvas Screen Shot ***//
+function shot() {
+    dataURL = canvas2D.toDataURL();
+}
