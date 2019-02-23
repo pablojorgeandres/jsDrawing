@@ -1,4 +1,6 @@
 # jsDrawing
-Drawing in canvas - js exercise
+### Drawing in canvas 
 
-Visit excersice at https://pablojorgeandres.github.io/jsDrawing/
+**HTML5 canvas - JavaScript**
+
+_Visit excersice at_ https://pablojorgeandres.github.io/jsDrawing/
