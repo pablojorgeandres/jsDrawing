@@ -3,4 +3,4 @@
 
 **HTML5 canvas - JavaScript**
 
-_Visit excersice at_ https://pablojorgeandres.github.io/jsDrawing/
+_Visit at_ https://pablojorgeandres.github.io/jsDrawing/
